@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flash FM — Vice City</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="bgImage"></div>
+    <div class="bgOverlay"></div>
+  </div>
+
+  <main class="stage">
+    <header class="topBar">
+      <div class="topLeft">Vice Views</div>
+      <div class="topRight">
+        <span class="kbd">Space: Play/Pause</span>
+        <span class="kbd">←/→: Prev/Next</span>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Flash FM Hero">
+      <div class="glass">
+        <div class="heroIntro">
+          <div class="welcome">Welcome back</div>
+          <div class="script">vice city</div>
+        </div>
+
+        <div class="heroBody">
+          <div class="logoBlock">
+            <div class="logoTitle">Flash FM</div>
+            <div class="logoSub">Vice City Radio</div>
+            <div class="logoMeta">
+              <span class="pill">FM • Stereo</span>
+              <span class="pill">1980s</span>
+              <span class="pill">Neon Pop</span>
+            </div>
+          </div>
+
+          <div class="blackCard">
+            <div class="blackTitle">Tonight on Flash FM</div>
+            <div class="blackDesc" id="nowBlurb">
+              Big hooks, bright synths, and the kind of choruses that make the city feel endless.
+            </div>
+
+            <div class="statsRow">
+              <div class="miniStat">
+                <div class="miniStatLabel">Now</div>
+                <div class="miniStatValue" id="nowTitle">Self Control — Laura Branigan</div>
+              </div>
+              <div class="miniStat">
+                <div class="miniStatLabel">Next</div>
+                <div class="miniStatValue" id="nextTitle">Call Me — Blondie</div>
+              </div>
+            </div>
+
+            <div class="actionsRow">
+              <button class="cta" id="heroPlay" type="button">PLAY</button>
+              <button class="ghost" id="shuffleBtn" type="button">SHUFFLE</button>
+            </div>
+
+            <div class="tinyNote">
+              Tip: hover to preview • tap to expand on mobile • space toggles play/pause
+            </div>
+          </div>
+        </div>
+
+        <div class="heroGrid">
+          <section class="panel" aria-label="Track list">
+            <div class="panelHeader">
+              <div class="panelTitle">Track List</div>
+              <div class="panelHint">Hover expands</div>
+            </div>
+
+            <div class="list" id="list">
+              <!-- fallback content is ok, JS will replace it -->
+              <div class="track">
+                <div class="row">
+                  <div class="index">01</div>
+                  <div>
+                    <div class="name">Self Control</div>
+                    <div class="artist">Laura Branigan</div>
+                  </div>
+                  <div class="meta">1984 • 4:06</div>
+                </div>
+                <div class="details">
+                  <div class="blurb">After-hours neon. A perfect midnight cruise anthem.</div>
+                  <button class="playBtn" type="button">PLAY</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="side" aria-label="Cover preview">
+            <div class="cover" id="coverMedia">
+              <img id="coverImg" alt="Cover" />
+              <div class="coverSheen" aria-hidden="true"></div>
+              <div class="eq" id="eq" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="sideInfo">
+              <div class="trackName" id="coverTitle">Self Control</div>
+              <div class="trackArtist" id="coverArtist">Laura Branigan</div>
+
+              <div class="tags">
+                <span class="tag" id="tagYear">YEAR 1984</span>
+                <span class="tag" id="tagMood">MOOD After Hours</span>
+                <span class="tag" id="tagLen">LEN 4:06</span>
+              </div>
+
+              <div class="sideText" id="sideText">
+                Flash FM: the soundtrack of neon boulevards, palm trees, and late-night escapes.
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="heroFooter">
+          Fan-made UI concept • Replace covers/audio with your own assets
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- ONE mini player only -->
+  <div class="mini" id="mini" aria-label="Mini player">
+    <div class="progress"><div class="bar" id="bar"></div></div>
+
+    <div class="miniRow">
+      <div class="miniCover">
+        <img id="miniImg" alt="Now playing cover" />
+      </div>
+
+      <div class="miniMeta">
+        <div class="miniTitle" id="miniTitle">—</div>
+        <div class="miniArtist" id="miniArtist">—</div>
+      </div>
+
+      <div class="visualizer" id="visualizer" aria-hidden="true">
+        <span class="viBar"></span><span class="viBar"></span><span class="viBar"></span><span class="viBar"></span>
+        <span class="viBar"></span><span class="viBar"></span><span class="viBar"></span><span class="viBar"></span>
+      </div>
+
+      <div class="controls">
+        <button class="iconBtn" id="prev" aria-label="Previous">⟨</button>
+        <button class="iconBtn primary" id="toggle" aria-label="Play/Pause">▶</button>
+        <button class="iconBtn" id="next" aria-label="Next">⟩</button>
+
+        <div class="vol" aria-label="Volume">
+          <span class="volIcon" id="muteBtn" title="Mute">🔊</span>
+          <input id="volume" class="volRange" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volume" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
